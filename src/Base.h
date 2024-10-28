@@ -15,6 +15,14 @@ namespace osflib {
 		Id m_Id;
 	};
 	
+	template<typename T>
+	class Visitor {
+	public:
+		Visitor(){}
+		virtual ~Visitor(){}
+		
+		virtual void Visit(const T& element) = 0;
+	};
 }
 
 #endif

@@ -13,6 +13,8 @@ int main() {
 	}
 	cout << "SUCCESS" << endl;
 	
+	//---
+	
 	cout << "Add 1 element: ";
 	{
 		Inventory test(100);
@@ -22,6 +24,8 @@ int main() {
 	}
 	cout << "SUCCESS" << endl;
 	
+	//---
+	
 	cout << "Add 1 element stacked: ";
 	{
 		Inventory test(100);
@@ -30,6 +34,8 @@ int main() {
 		assert(test.Size() == 1);
 	}
 	cout << "SUCCESS" << endl;
+	
+	//---
 	
 	cout << "Move 1 element: ";
 	{
@@ -43,6 +49,8 @@ int main() {
 	}
 	cout << "SUCCESS" << endl;
 	
+	//---
+	
 	cout << "Remove too much quantity: ";
 	{
 		Inventory test(100);
@@ -54,6 +62,8 @@ int main() {
 	}
 	cout << "SUCCESS" << endl;
 	
+	//---
+	
 	cout << "Get entry: ";
 	{
 		Inventory test(100);
@@ -64,6 +74,29 @@ int main() {
 		Results res = test.GetEntry(SWORD, &entry);
 		assert(res == Success);
 		assert(entry.quantity == 6);
+	}
+	cout << "SUCCESS" << endl;
+	
+	//---
+	
+	cout << "Visitor entry: ";
+	{
+		Inventory test(100);
+		InventoryEntry entry(0,0);
+		Id SWORD = 200;
+		Id DAGGER = 201;
+		class PrintInvVisitor : public Visitor<InventoryEntry> {
+		public:
+			PrintInvVisitor() : Visitor<InventoryEntry>(){}
+			~PrintInvVisitor() {}
+			void Visit(const InventoryEntry& entry) override {
+				cout << entry.element << " qta: " << entry.quantity << endl;
+			}
+		};
+		PrintInvVisitor visitor;
+		test.AddEntry({SWORD, 1});
+		test.AddEntry({DAGGER, 2});
+		test.Visit(visitor);
 	}
 	cout << "SUCCESS" << endl;
 	

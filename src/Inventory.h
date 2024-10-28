@@ -25,6 +25,7 @@ namespace osflib {
 		Results RemoveEntry(const InventoryEntry& entry);
 		Results MoveEntry(const InventoryEntry& entry, Inventory* destination);
 		Results GetEntry(Id entryId, InventoryEntry* destination);
+		void Visit(Visitor<InventoryEntry>& visitor);
 		void Clear();
 		unsigned int Size() const;
 		

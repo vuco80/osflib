@@ -75,4 +75,9 @@ namespace osflib {
 		destination->quantity = (*iter).quantity;
 		return Success;
 	}
+	
+	void Inventory::Visit(Visitor<InventoryEntry>& visitor) {
+		//for_each(m_Entries.begin(), m_Entries.end(), [visitor](const InventoryEntry& e) { visitor.Visit(e); });
+		for(auto iter=m_Entries.begin(); iter != m_Entries.end(); ++iter) visitor.Visit((*iter));
+	}
 }
