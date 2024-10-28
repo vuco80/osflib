@@ -79,10 +79,9 @@ int main() {
 	
 	//---
 	
-	cout << "Visitor entry: ";
+	cout << "Visitor entry: " << endl;
 	{
 		Inventory test(100);
-		InventoryEntry entry(0,0);
 		Id SWORD = 200;
 		Id DAGGER = 201;
 		class PrintInvVisitor : public Visitor<InventoryEntry> {
@@ -97,6 +96,18 @@ int main() {
 		test.AddEntry({SWORD, 1});
 		test.AddEntry({DAGGER, 2});
 		test.Visit(visitor);
+	}
+	cout << "SUCCESS" << endl;
+	
+	//---
+	
+	cout << "Inventory Instances" << endl;
+	{
+		Inventory test(100), test2(101);
+		assert(test.GetId() == 100);
+		assert(test2.GetId() == 101);
+		cout << "test1 instance id: " << test.GetInstanceId() << " / test2 instance id: " << test2.GetInstanceId() << endl;
+		assert(test.GetInstanceId() != test2.GetInstanceId());
 	}
 	cout << "SUCCESS" << endl;
 	

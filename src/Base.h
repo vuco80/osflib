@@ -7,12 +7,16 @@ namespace osflib {
 	
 	class ResourceBase {
 	public:
-		ResourceBase(Id id) : m_Id(id) {}
+		ResourceBase(Id id) : m_Id(id), m_InstanceId(++m_NextInstanceId) {}
 		virtual ~ResourceBase() {}
 		
-		int GetId() const { return m_Id; }
+		Id GetId() const { return m_Id; }
+		Id GetInstanceId() const { return m_InstanceId; }
+		
 	private:
 		Id m_Id;
+		Id m_InstanceId;
+		static Id m_NextInstanceId;
 	};
 	
 	template<typename T>

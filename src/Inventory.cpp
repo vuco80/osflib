@@ -2,6 +2,9 @@
 #include <algorithm>
 
 namespace osflib {
+	
+	// put here in absence of a better place
+	Id ResourceBase::m_NextInstanceId = 0;
 
 	Inventory::Inventory(Id id) : ResourceBase(id), m_Size(0) {
 	}
