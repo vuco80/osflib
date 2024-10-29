@@ -5,11 +5,14 @@ namespace osflib {
 
 	typedef unsigned int Id;
 	
+	#define EmptyId 0
+	
 	enum Results {
 		Success = 0,
 		Error,
 		QuantityOverflow,
-		NotFound
+		NotFound,
+		OutOfBounds
 	};
 }
 
