@@ -20,13 +20,13 @@ namespace osflib {
 		}
 	}
 	
-	const Stat& StatSheet::GetStat(Id statId) {
-		return m_Stats[statId];
+	const Stat& StatSheet::GetStat(Id statId) const {
+		return m_Stats.at(statId);
 	}
 	
-	const Stat& StatSheet::GetStat(Id statId, Id statSubId) {
+	const Stat& StatSheet::GetStat(Id statId, Id statSubId) const {
 		Stat search(statId, statSubId, 0);
-		std::forward_list<Stat>::iterator iter = std::find(m_SubIdStats.begin(), m_SubIdStats.end(), search);
+		std::forward_list<Stat>::const_iterator iter = std::find(m_SubIdStats.begin(), m_SubIdStats.end(), search);
 		return (*iter);
 	}
 

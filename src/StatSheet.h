@@ -18,7 +18,7 @@ namespace osflib {
 		Id GetSubId() const { return m_SubId; }
 		int GetValue() const { return m_Value; }
 		
-		bool operator==(const Stat& other) { return m_Id == other.m_Id && m_SubId == other.m_SubId; }
+		bool operator==(const Stat& other) const { return m_Id == other.m_Id && m_SubId == other.m_SubId; }
 		
 	private:
 		Id m_Id;
@@ -34,8 +34,8 @@ namespace osflib {
 		~StatSheet();
 		
 		void AddStat(const Stat& stat);
-		const Stat& GetStat(Id statId);
-		const Stat& GetStat(Id statId, Id statSubId);
+		const Stat& GetStat(Id statId) const;
+		const Stat& GetStat(Id statId, Id statSubId) const;
 		
 	private:
 		std::map<Id, Stat> m_Stats;
