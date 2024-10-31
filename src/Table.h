@@ -14,7 +14,7 @@ namespace osflib {
 		virtual ~TableQuery(){}
 		
 		virtual void Select(const T& row) = 0;
-		const std::vector<T>& Rows(){ return m_Rows; }
+		const std::vector<T>& Rows() const { return m_Rows; }
 		
 	protected:
 		std::vector<T> m_Rows;
