@@ -49,6 +49,23 @@ int main() {
 	}
 	cout << "SUCCESS" << endl;
 	
+	//---
+	
+	cout << "Query for stat: " << endl;
+	{
+		Id HP = 103;
+		Id LEVEL = 100;
+		Id CLASS_FIGHTER = 101;
+		StatSheet sheet;
+		assert(sheet.HasStat(HP) == false);
+		sheet.AddStat({ HP, 0, 7 });
+		assert(sheet.HasStat(HP) == true);
+		assert(sheet.HasStat(LEVEL, CLASS_FIGHTER) == false);
+		sheet.AddStat({ LEVEL, CLASS_FIGHTER, 1 });
+		assert(sheet.HasStat(LEVEL, CLASS_FIGHTER) == true);
+	}
+	cout << "SUCCESS" << endl;
+	
 	cout << endl << "All tests passed with success!" << endl;
 	
 	return 0;

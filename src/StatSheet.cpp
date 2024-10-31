@@ -29,5 +29,26 @@ namespace osflib {
 		std::forward_list<Stat>::const_iterator iter = std::find(m_SubIdStats.begin(), m_SubIdStats.end(), search);
 		return (*iter);
 	}
+	
+	bool StatSheet::HasStat(Id statId) const {
+		std::map<Id, Stat>::const_iterator iter = m_Stats.find(statId);
+		return iter != m_Stats.end();
+	}
+	
+	bool StatSheet::HasStat(Id statId, Id statSubId) const {
+		Stat search(statId, statSubId, 0);
+		std::forward_list<Stat>::const_iterator iter = std::find(m_SubIdStats.begin(), m_SubIdStats.end(), search);
+		return iter != m_SubIdStats.end();
+	}
+	
+	Stat& StatSheet::EditStat(Id statId) {
+		return m_Stats[statId];
+	}
+	
+	Stat& StatSheet::EditStat(Id statId, Id statSubId) {
+		Stat search(statId, statSubId, 0);
+		std::forward_list<Stat>::iterator iter = std::find(m_SubIdStats.begin(), m_SubIdStats.end(), search);
+		return (*iter);
+	}
 
 }
